@@ -43,8 +43,8 @@ int nbrDevices = 0;
 int usedChannels[15];
 
 #ifndef CREDENTIALS
-#define mySSID "*****"
-#define myPASSWORD "******"
+#define mySSID "Zabriskie"
+#define myPASSWORD "JeffJoeJay"
 #endif
 
 StaticJsonDocument<JBUFFER>  jsonBuffer;
@@ -183,11 +183,13 @@ void sendDevices() {
   while (!client.connected()) {
     Serial.println("Connecting to MQTT...");
 
-    if (client.connect("ESP32Client", "admin", "admin" )) {
+    // if (client.connect("ESP32Client", "admin", "admin" )) {
+    if (client.connect("ESP32Client", "", "")) {
       Serial.println("connected");
     } else {
       Serial.print("failed with state ");
       Serial.println(client.state());
+      //while(Serial.available() == 0);
     }
     yield();
   }
